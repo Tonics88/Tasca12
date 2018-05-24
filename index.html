@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+	<title>Tasca 12 - Afegir i eliminar alumnes a una taula amb AngularJS</title>
+	<!-- Llibreries de bootstrap afegides directament d'internet-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body style="background-color:silver" ng-controller="myCtrl">
+	
+	<!-- Formulari -->
+	<div class="container">
+		<br>
+		<!-- Dividim la pantalla en dos div, una mostrarà el formulari per entrar les dades del nou alumne i l'altre la llista d'alumnes-->
+		<div class="card-deck">
+			
+			<div class="card col-md-auto col-lg-3">
+				<!-- <div ng-if="!afegir"><button ng-submit="afegir=!afegir" type="submit">Nou Alumne</button></div> -->
+				<div class="card-body" ng-if="!afegir">
+					<h5 class="card-title">DADES NOU ALUMNE</h5>
+					<p class="card-text">
+						<form ng-submit="nouAlumne()">
+							<div class="form-group">
+								<label for="dni">DNI :</label>
+								<input	type="text"
+										class="form-control" 
+										ng-model="alumne.dni" 
+										placeholder="DNI"
+										required>
+							</div>
+							<div class="form-group">
+								<label for="nom">Nom :</label>
+								<input	type="text" 
+										class="form-control"
+										ng-model="alumne.nom" 
+										placeholder="Nom"
+										required>
+							</div>
+							<div class="form-group">
+								<label for="llinatges">Llinatges :</label>
+								<input	type="text" 
+										class="form-control" 
+										ng-model="alumne.llinatges" 
+										placeholder="Llinatges"
+										required>
+							</div>
+							<div class="form-group">
+								<label for="email">Correu electrònic :</label>
+								<input	type="email" 
+										class="form-control" 
+										ng-model="alumne.email" 
+										placeholder="Correu electrònic"
+										required>
+								<!-- Establim el tipus com email per asegurar que el format serà correcte -->
+							</div>
+							<div class="form-group">
+								<label for="nota">Nota :</label>
+								<input	type="number" 
+										class="form-control" 
+										ng-model="alumne.nota" 
+										placeholder="Nota" 
+										min="0" 
+										max="10"
+										required>
+							<!-- Establim com a mínim 0 i màxim 10 per assegurar que es una nota entre aquests valors -->
+							</div>
+							<br>
+							<div class="form-group">
+								<button type="submit" class="btn btn-secondary btn-block" id="btn1">Afegir</button>
+							</div>
+						</form>
+						
+					</p>
+				</div>
+				<div class="card-footer">
+					<!-- Pagina web creada per en Toni Caballero Salas -->
+					<small class="text-muted">&nbsp&copy&nbspToni Caballero Salas</small>
+				</div>
+			</div>
+			
+			<div class="card col-md-auto col-lg-9" ng-if="alumnes.length!=0">
+				<img class="card-img-top" src="img/studiants.jpg" alt="Card image cap">
+				<div class="card-body">
+					<h5 class="card-title">LLISTA D'ALUMNES</h5>
+					<div class="card-text">
+						
+						<!-- Definim taula en format de  "Hoverable rows" de Bootstrap -->
+						<table class="table table-hover" style="width:100%; text-align:center">
+							<thead><tr>
+								<th>DNI</th>
+								<th>Nom</th>
+								<th>Llinatges</th>
+								<th>Correu electrònic</th>
+								<th>Nota</th>
+								<th>-</th>
+							</tr></thead>
+							<tr ng-repeat="alumne in alumnes">
+								<td ng-repeat="x in alumne">{{x}}</td>
+							</tr>
+						</table>
+						
+
+						<ul>
+							<li ng-repeat="x in alumnes">
+							  {{ x.nom }}
+							</li>
+						  </ul>
+					</div>
+				</div>
+				<div class="card-footer">
+					<small class="text-muted" id="darrerModificat">Cap alummne afegit</small>
+				</div>
+				
+			</div>
+		</div>
+		
+	</div>
+	<br>
+	<h1>Hola {{nom}} {{$scope.alumnes[0].nom}}</h1>
+    <form>
+      ¿Com et dius? <input type="text" ng-model="nom">
+    </form>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	<script src="js/controller.js"></script>
+</body>
+</html>
