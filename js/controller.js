@@ -75,7 +75,7 @@ app.controller("myCtrl", function myCtrl($scope){
         if ($scope.checkDNI($scope.alumne.dni)) {
             $scope.alumnes.push($scope.alumne);
             //Indicam quan s'ha afegit
-            $scope.registre = $scope.darrerAfegit('Darrer alummne afegit: ');
+            $scope.registre = $scope.darrerAfegit('Darrer alumne afegit: ');
             $scope.alumne = {};
             //Un pic afegit ocultam el formulari.
             $scope.afegir = false;
