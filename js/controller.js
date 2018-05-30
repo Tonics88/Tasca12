@@ -27,7 +27,7 @@ app.controller("myCtrl", function myCtrl($scope){
     //Funció per detectar borrar alumnes i mostrar quan s'ha borrat.
     $scope.borrar = function (i) {
         $scope.alumnes.splice(i, 1);
-        $scope.registre = $scope.darrerAfegit('Darrer alummne borrat: ');
+        $scope.registre = $scope.darrerAfegit('Darrer alumne borrat: ');
     }    
     
     //Funció per detectar alumnes repetits.
